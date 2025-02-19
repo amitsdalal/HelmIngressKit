@@ -30,8 +30,8 @@ jobs:
 
       - name: Set Chart Version from Git Tag
         run: |
-          # Extract version number only (strip 'v' prefix if exists)
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null | sed -E 's/^v?([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+          # Extract version number only (strip 'v' or chart name if exists)
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null | sed -E 's/^(HelmIngressKit-|v)//g')
 
           # If no tags exist, set a default version
           if [[ -z "$LATEST_TAG" ]]; then LATEST_TAG="1.0.0"; fi
@@ -43,7 +43,7 @@ jobs:
           sed -i "s/^version:.*/version: \"$LATEST_TAG\"/" charts/HelmIngressKit/Chart.yaml
 
           # Debugging: Print extracted version (remove after testing)
-          echo "Extracted version: $LATEST_TAG"
+          echo "Final extracted version: $LATEST_TAG"
 
 
       - name: Package Helm Chart
