@@ -60,7 +60,7 @@ ingress:
 ## Example Usage
 A complete example of using this Helm chart with custom values:
 ```sh
-helm upgrade --install my-release amitdalal-charts/HelmIngressKit \
+helm upgrade --install my-release helmingresskit/HelmIngressKit \
   --namespace $KUBE_NAMESPACE \
   --set image.repository=$REGISTRY \
   --set image.tag=$IMAGE_TAG \
@@ -71,7 +71,7 @@ helm upgrade --install my-release amitdalal-charts/HelmIngressKit \
 ## Upgrade
 To upgrade to a new version:
 ```sh
-helm upgrade my-release amitdalal-charts/HelmIngressKit -f values.yaml
+helm upgrade my-release helmingresskit/HelmIngressKit -f values.yaml
 ```
 
 ## Uninstall
