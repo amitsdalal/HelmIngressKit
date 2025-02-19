@@ -3,16 +3,16 @@ entries:
   HelmIngressKit:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2025-02-19T17:06:52.934190392+05:30"
+    created: "2025-02-19T17:10:18.723053632+05:30"
     description: A Helm chart for deploying a Node.js (or web-based) microservice
       on AWS EKS with ingress support
-    digest: 84fe63b012cf611e81ce473578f0402fc43a3c36fbec5487f09d5fb2586b57bd
+    digest: 09aa6b7bc9ff9e32853794a406e0f092bd3c0ea51dce86664105d78138ae4361
     icon: https://raw.githubusercontent.com/amitsdalal/HelmIngressKit/main/icon.png
     maintainers:
     - name: Amit Dalal
     name: HelmIngressKit
     type: application
     urls:
-    - https://helmingresskit.amitdalal.com/HelmIngressKit-1.0.0.tgz
+    - https://charts.amitdalal.com/HelmIngressKit-1.0.0.tgz
     version: 1.0.0
-generated: "2025-02-19T17:06:52.933932074+05:30"
+generated: "2025-02-19T17:10:18.722780734+05:30"

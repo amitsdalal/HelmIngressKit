@@ -1,3 +1,0 @@
-Your application is deployed.
-
-To access it via ALB, go to: https://{{ .Values.ingress.host }}
