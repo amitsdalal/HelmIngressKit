@@ -3,10 +3,10 @@ entries:
   HelmIngressKit:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2025-02-19T13:37:42.195722538Z"
+    created: "2025-02-19T14:22:12.180139127Z"
     description: A Helm chart for deploying a Node.js (or web-based) microservice
       on AWS EKS with ingress support
-    digest: 68adebb07264c32607e06d1e1bfd22af71bfbad9046f90a7c1b6f0db21dd4e4d
+    digest: 3883f6c76a9c713d9743fbe2a942011cddbe1cee44f536aeeacdf1f8d88ada72
     icon: https://raw.githubusercontent.com/amitsdalal/HelmIngressKit/main/icon.png
     maintainers:
     - name: Amit Dalal
@@ -17,7 +17,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2025-02-19T13:37:42.195427818Z"
+    created: "2025-02-19T14:22:12.179843645Z"
     description: A Helm chart for deploying a Node.js (or web-based) microservice
       on AWS EKS with ingress support
     digest: 553050f34501607ec9fdcbe7cae1d451f5051981c882eb504f165dbab8bf8a8b
@@ -31,7 +31,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2025-02-19T13:37:42.195142775Z"
+    created: "2025-02-19T14:22:12.179536211Z"
     description: A Helm chart for deploying a Node.js (or web-based) microservice
       on AWS EKS with ingress support
     digest: 94591b2181e72213fd425e9d53dde81112917d5cbfa3f1a06e233df6b0e26be3
@@ -45,7 +45,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2025-02-19T13:37:42.194792361Z"
+    created: "2025-02-19T14:22:12.179211564Z"
     description: A Helm chart for deploying a Node.js (or web-based) microservice
       on AWS EKS with ingress support
     digest: b5301c94253b1db124003bf5b974a353a673104c8136170afb4f2b92dbe3dd0b
@@ -59,7 +59,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2025-02-19T13:37:42.194426558Z"
+    created: "2025-02-19T14:22:12.178868643Z"
     description: A Helm chart for deploying a Node.js (or web-based) microservice
       on AWS EKS with ingress support
     digest: 10c228cb2f87431afaa6bf6ee4b568f75bec9b6b7ed438cefd1b6d7b74c24681
@@ -71,4 +71,4 @@ entries:
     urls:
     - https://charts.amitdalal.com/HelmIngressKit-1.0.0.tgz
     version: 1.0.0
-generated: "2025-02-19T13:37:42.193933196Z"
+generated: "2025-02-19T14:22:12.178411297Z"
