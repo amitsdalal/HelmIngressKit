@@ -72,11 +72,21 @@ jobs:
           git fetch origin gh-pages
           git checkout gh-pages || git checkout --orphan gh-pages
           mkdir -p docs
-          mv .cr-release-packages/* docs/
-          helm repo index docs --url https://charts.amitdalal.com/
-          git add docs/index.yaml docs/*.tgz
+
+          # Move newly packaged chart to `docs/`
+          mv .cr-release-packages/*.tgz docs/
+
+          # Ensure previous `index.yaml` exists before merging
+          if [[ -f docs/index.yaml ]]; then
+            helm repo index docs --url https://charts.amitdalal.com/ --merge docs/index.yaml
+          else
+            helm repo index docs --url https://charts.amitdalal.com/
+          fi
+
+          git add docs/
           git commit -m "Release HelmIngressKit v$VERSION"
           git push origin gh-pages
+
 
       - name: Debug GitHub Token
         run: |
