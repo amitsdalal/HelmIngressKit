@@ -30,20 +30,29 @@ jobs:
 
       - name: Set Chart Version from Git Tag
         run: |
-          # Extract version number only (strip 'v' or chart name if exists)
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null | sed -E 's/^(HelmIngressKit-|v)//g')
+          # Get the latest tag from Git, remove 'v' if it exists
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.0.0")
+          LATEST_TAG=$(echo $LATEST_TAG | sed -E 's/^(v|HelmIngressKit-)//')
 
-          # If no tags exist, set a default version
-          if [[ -z "$LATEST_TAG" ]]; then LATEST_TAG="1.0.0"; fi
+          # Split version into major, minor, patch
+          MAJOR=$(echo $LATEST_TAG | cut -d. -f1)
+          MINOR=$(echo $LATEST_TAG | cut -d. -f2)
+          PATCH=$(echo $LATEST_TAG | cut -d. -f3)
+
+          # Auto-increment the PATCH version
+          PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
 
           # Store in GitHub Actions environment
-          echo "VERSION=$LATEST_TAG" >> $GITHUB_ENV
+          echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
-          # Ensure Chart.yaml contains only a valid semantic version
-          sed -i "s/^version:.*/version: \"$LATEST_TAG\"/" charts/HelmIngressKit/Chart.yaml
+          # Update Chart.yaml with the new version
+          sed -i "s/^version:.*/version: \"$NEW_VERSION\"/" charts/HelmIngressKit/Chart.yaml
 
-          # Debugging: Print extracted version (remove after testing)
-          echo "Final extracted version: $LATEST_TAG"
+          # Debugging: Print extracted version
+          echo "Previous version: $LATEST_TAG"
+          echo "New version: $NEW_VERSION"
+
 
 
       - name: Package Helm Chart
