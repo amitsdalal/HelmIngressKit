@@ -67,6 +67,15 @@ jobs:
           git commit -m "Release HelmIngressKit v$VERSION"
           git push origin gh-pages
 
+      - name: Debug GitHub Token
+        run: |
+          if [[ -z "${{ secrets.GITHUB_TOKEN }}" ]]; then
+            echo "GITHUB_TOKEN is NOT available!"
+            exit 1
+          else
+            echo "GITHUB_TOKEN is set!"
+          fi
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         env:
