@@ -107,4 +107,4 @@ jobs:
           body: "Automated Helm Chart release v${{ env.VERSION }}"
           draft: false
           prerelease: false
-          files: .cr-release-packages/*.tgz
+          files: .cr-release-packages/HelmIngressKit-*.tgz
