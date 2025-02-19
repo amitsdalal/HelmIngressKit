@@ -50,6 +50,8 @@ jobs:
         run: |
           mkdir -p .cr-release-packages
           helm package charts/HelmIngressKit --destination .cr-release-packages
+          ls -l .cr-release-packages  # Debugging: List the packaged files
+
 
       - name: Configure Git
         run: |
