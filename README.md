@@ -16,15 +16,15 @@ Before using this chart, ensure you have:
 - An **ACM certificate** for HTTPS (if SSL is enabled, AWS SSL ARN).
 
 ## Installation
-### 1. Add the Helm repository (if applicable)
+### 1. Add the Helm repository
 ```sh
-helm repo add amitsdalal https://github.com/amitsdalal/HelmIngressKit.git
+helm repo add helmingresskit https://charts.amitdalal.com/
 helm repo update
 ```
 
 ### 2. Install the chart
 ```sh
-helm install my-release amitsdalal/HelmIngressKit -f values.yaml
+helm install my-release helmingresskit/HelmIngressKit -f values.yaml
 ```
 Replace `my-release` with your preferred release name.
 
@@ -60,7 +60,7 @@ ingress:
 ## Example Usage
 A complete example of using this Helm chart with custom values:
 ```sh
-helm upgrade --install my-release amitsdalal/HelmIngressKit \
+helm upgrade --install my-release helmingresskit/HelmIngressKit \
   --namespace $KUBE_NAMESPACE \
   --set image.repository=$REGISTRY \
   --set image.tag=$IMAGE_TAG \
@@ -71,7 +71,7 @@ helm upgrade --install my-release amitsdalal/HelmIngressKit \
 ## Upgrade
 To upgrade to a new version:
 ```sh
-helm upgrade my-release amitsdalal/HelmIngressKit -f values.yaml
+helm upgrade my-release helmingresskit/HelmIngressKit -f values.yaml
 ```
 
 ## Uninstall
