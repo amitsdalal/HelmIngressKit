@@ -97,14 +97,10 @@ jobs:
             echo "GITHUB_TOKEN is set!"
           fi
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.7.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.VERSION }}
-          name: "HelmIngressKit ${{ env.VERSION }}"
-          body: "Automated Helm Chart release v${{ env.VERSION }}"
-          draft: false
-          prerelease: false
-          files: .cr-release-packages/HelmIngressKit-*.tgz
+          charts_dir: charts
+          config: .github/config/cr.yaml

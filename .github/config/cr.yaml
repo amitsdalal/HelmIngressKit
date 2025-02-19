@@ -1,0 +1,4 @@
+owner: amitsdalal
+git_repo: HelmIngressKit
+charts_repo_url: https://charts.amitdalal.com
+package_path: .cr-release-packages
