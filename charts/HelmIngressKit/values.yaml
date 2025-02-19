@@ -68,5 +68,4 @@ ingress:
     alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"  # Failure threshold
     alb.ingress.kubernetes.io/success-codes: "200-499"  # HTTP codes considered healthy
 
-
 # Values for annotations are referred from https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/annotations/
