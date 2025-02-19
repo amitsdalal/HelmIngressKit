@@ -1,5 +1,7 @@
-# Default values for EKS-Ingress-Service Helm chart.
+# Default values for HelmIngressKit Helm chart.
 # These are the configurable options that users can override during deployment.
+
+name: my-app  # Define the application name used across resources
 
 # Number of replicas for the deployment (Recommended: at least 2 for high availability)
 replicaCount: 2
@@ -16,6 +18,9 @@ imagePullSecrets:
   - name: gitlab-registry-secret
 
 service:
+  # Kubernetes service name
+  name: my-app-service
+
   # Kubernetes service type. Options: ClusterIP (internal), NodePort, LoadBalancer.
   type: ClusterIP
 

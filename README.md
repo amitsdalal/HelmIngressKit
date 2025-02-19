@@ -13,7 +13,7 @@ Before using this chart, ensure you have:
 - Kubernetes cluster on **AWS EKS**.
 - **Helm 3** installed.
 - AWS Load Balancer Controller configured.
-- An **ACM certificate** for HTTPS (if SSL is enabled, aws ssl arn).
+- An **ACM certificate** for HTTPS (if SSL is enabled, AWS SSL ARN).
 
 ## Installation
 ### 1. Add the Helm repository (if applicable)
@@ -57,6 +57,17 @@ ingress:
     alb.ingress.kubernetes.io/certificate-arn: "<your-acm-arn>"
 ```
 
+## Example Usage
+A complete example of using this Helm chart with custom values:
+```sh
+helm upgrade --install my-release amitsdalal/HelmIngressKit \
+  --namespace $KUBE_NAMESPACE \
+  --set image.repository=$REGISTRY \
+  --set image.tag=$IMAGE_TAG \
+  --set ingress.host=$DOMAIN_NAME \
+  --set ingress.annotations.alb\.ingress\.kubernetes\.io/certificate-arn=$SSL_CERT_ARN
+```
+
 ## Upgrade
 To upgrade to a new version:
 ```sh
@@ -74,3 +85,11 @@ This Helm chart is open-source and available under the MIT license.
 
 ## Contributing
 Feel free to open issues or pull requests to improve HelmIngressKit!
+
+### How to Contribute
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a pull request with detailed information about your changes.
+
+For issues or feature requests, please [open an issue](https://github.com/amitsdalal/HelmIngressKit/issues).

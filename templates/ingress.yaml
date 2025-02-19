@@ -16,6 +16,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: HelmIngressKit-service
+            name: {{ .Values.service.name }}
             port:
-              number: 4000
+              number: {{ .Values.service.port }}
