@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: HelmIngressKit
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: HelmIngressKit
+  template:
+    metadata:
+      labels:
+        app: HelmIngressKit
+    spec:
+      imagePullSecrets:
+        - name: gitlab-registry-secret
+      containers:
+      - name: HelmIngressKit
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 4000
+        envFrom:
+        - secretRef:
+            name: app-env  # ✅ Load .env variables from the Kubernetes secret

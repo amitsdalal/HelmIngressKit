@@ -1,0 +1,64 @@
+# Default values for EKS-Ingress-Service Helm chart.
+# These are the configurable options that users can override during deployment.
+
+# Number of replicas for the deployment (Recommended: at least 2 for high availability)
+replicaCount: 2
+
+image:
+  # The container image repository (modify to point to your registry)
+  repository: registry.gitlab.com/your-repo/eks-play
+
+  # The image tag to deploy (default is 'latest', but GitLab CI/CD will override this with a specific tag during deployment)
+  tag: latest
+
+imagePullSecrets:
+  # Kubernetes secret name for pulling private images from the registry (update if using a different registry)
+  - name: gitlab-registry-secret
+
+service:
+  # Kubernetes service type. Options: ClusterIP (internal), NodePort, LoadBalancer.
+  type: ClusterIP
+
+  # The port on which the service will be exposed inside the cluster.
+  port: 4000
+
+ingress:
+  # Name of the ingress resource
+  name: my-app-ingress
+
+  # The external hostname that routes to this service (update as per your domain)
+  host: your.domain.com
+
+  # Path-based routing (set this to match your application's API path)
+  path: /graphql
+
+  # Enable or disable ingress creation
+  enabled: true
+
+  # Namespace where the ingress will be deployed (ensure the namespace exists)
+  namespace: yournamespace
+
+  annotations:
+    # AWS ALB Ingress Controller settings (modify based on your infrastructure)
+    alb.ingress.kubernetes.io/scheme: "internet-facing"  # Expose ALB externally
+    alb.ingress.kubernetes.io/target-type: "ip"  # Targets individual pod IPs
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'  # ALB listens on HTTP and HTTPS
+
+    # SSL/TLS settings - replace with your actual ACM certificate ARN
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:<aws_region>:<your_account_id>:certificate/<ssl_id>"
+    alb.ingress.kubernetes.io/ssl-redirect: "443"  # Redirect HTTP to HTTPS
+
+    # Kubernetes ingress class (ensure you have AWS Load Balancer Controller installed)
+    kubernetes.io/ingress.class: "alb"
+
+    # Group ALBs to reuse across multiple services if required
+    alb.ingress.kubernetes.io/group.name: "my-group-alb"
+
+    # ALB health check settings
+    alb.ingress.kubernetes.io/healthcheck-port: "4000"  # Port to check health on
+    alb.ingress.kubernetes.io/healthcheck-path: "/healthz"  # Path for health check
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "15"  # Frequency of checks
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5"  # Timeout per check
+    alb.ingress.kubernetes.io/healthy-threshold-count: "2"  # Success threshold
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"  # Failure threshold
+    alb.ingress.kubernetes.io/success-codes: "200-499"  # HTTP codes considered healthy
