@@ -28,6 +28,16 @@ helm install my-release helmingresskit/HelmIngressKit -f values.yaml
 ```
 Replace `my-release` with your preferred release name.
 
+OPTIONAL: if you want to check the values.yaml (or just want to view it)
+
+
+```sh
+helm show values helmingresskit/HelmIngressKit > values.yaml   #To save in a file
+
+helm show values helmingresskit/HelmIngressKit                 #To view on the fly
+```
+
+
 ## Configuration
 Modify the `values.yaml` file to customize the deployment. Below are key configurations:
 
